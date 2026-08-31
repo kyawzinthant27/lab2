@@ -1,0 +1,83 @@
+=== JOB INFORMATION ===
+Job ID: 12210
+Node: gpu06.slurm.cpe.kmutt.ac.th
+CPU allocation: 4
+name, memory.total [MiB]
+NVIDIA GeForce RTX 4090, 24564 MiB
+=== PART I ===
+PART I - MEMORY FOOTPRINT
+GPU: NVIDIA GeForce RTX 4090
+Matrix dimensions: 10000 x 10000
+
+float32
+Bytes per element: 4
+GPU memory allocated: 382.00 MiB
+
+float16
+Bytes per element: 2
+GPU memory allocated: 190.73 MiB
+
+=== PART II ===
+PART II - FLOATING-POINT PRECISION
+GPU: NVIDIA GeForce RTX 4090
+A shape: (4, 4), B shape: (4, 4)
+
+--- Input scale = 1 ---
+float32 result:
+tensor([[1.59860754, 2.06575346, 1.57238317, 0.78526956],
+        [1.07870734, 1.63188410, 0.78285027, 0.62923765],
+        [1.35078847, 1.87796962, 1.33719099, 0.89469755],
+        [2.05046797, 2.67126298, 2.08105016, 0.98532546]])
+
+float16 result:
+tensor([[1.59863281, 2.06640625, 1.57226562, 0.78515625],
+        [1.07910156, 1.63183594, 0.78271484, 0.62939453],
+        [1.35058594, 1.87792969, 1.33691406, 0.89453125],
+        [2.05078125, 2.67187500, 2.08203125, 0.98535156]])
+Maximum absolute difference from float32: 0.00098109245
+
+bfloat16 result:
+tensor([[1.60156250, 2.06250000, 1.57812500, 0.78515625],
+        [1.07812500, 1.63281250, 0.78125000, 0.62890625],
+        [1.35156250, 1.87500000, 1.33593750, 0.89453125],
+        [2.04687500, 2.67187500, 2.07812500, 0.98437500]])
+Maximum absolute difference from float32: 0.0057418346
+
+--- Input scale = 100 ---
+float32 result:
+tensor([[15986.07421875, 20657.53515625, 15723.83203125,  7852.69580078],
+        [10787.07324219, 16318.84179688,  7828.50292969,  6292.37695312],
+        [13507.88476562, 18779.69726562, 13371.91015625,  8946.97558594],
+        [20504.67968750, 26712.63281250, 20810.50390625,  9853.25390625]])
+
+float16 result:
+tensor([[15984., 20656., 15728.,  7856.],
+        [10784., 16320.,  7828.,  6292.],
+        [13504., 18768., 13368.,  8952.],
+        [20512., 26704., 20816.,  9856.]])
+Maximum absolute difference from float32: 11.697266
+
+bfloat16 result:
+tensor([[16000., 20736., 15744.,  7840.],
+        [10752., 16320.,  7840.,  6272.],
+        [13504., 18816., 13376.,  8960.],
+        [20480., 26752., 20736.,  9856.]])
+Maximum absolute difference from float32: 78.464844
+
+=== PART III ===
+PART III - COMPUTATION TIME
+Matrix multiplication: (2048, 2048) @ (2048, 2048)
+GPU: NVIDIA GeForce RTX 4090
+Repeated measurements: 3
+
+--- CUDA ---
+float32: 0.391 ms
+float16: 0.134 ms
+bfloat16: 0.129 ms
+
+--- CPU ---
+float32: 44.224 ms
+float16: 40010.312 ms
+bfloat16: 14.391 ms
+
+=== FINISHED ===
